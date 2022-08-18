@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Maze&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    perspective: 500px;
+}
+
+.card {
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    transform-style: preserve-3d;
+    width: 200px;
+    height: 300px;
+    transition: 0.1s;
+    border-radius: 10px;
+}
+
+.card:hover {
+    transform: scale(1.2);
+}
+
+.card::after{
+    content: "";
+    border-radius: 10px;
+    position: absolute;
+    inset: -20px;
+    background: linear-gradient(
+        200deg,
+        #ff0000 12.5%,
+        #ffa500 25%,
+        #ffff00 37.5%,
+        #08a608 50%,
+        #30d6ff 62.5%,
+        #0000ff 75%,
+        #4b0082 87.5%
+    ) repeat 0% 0% / 300% 100%;
+    filter: blur(10px);
+    transform: translateZ(-30px);
+    animation: bg_anim 10s linear infinite;
+}
+
+@keyframes bg_anim {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+        
+    }
+}
+
+.card__content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background-color: rgb(69, 69, 69);
+    transform-style: preserve-3d;
+
+}
+
+.card__content span {
+    font-size: 40px;
+    font-family: 'Rubik Maze', cursive;
+    transition: 0.1s;
+}
+
+.card__content:hover {
+    background: radial-gradient(
+        rgb(81, 81, 81) 20%,
+        rgb(69, 69, 69) 100%
+    ) repeat 0% 0% / 200% 200%;
+
+    background-position: 50% 50%;
+}
+
+.card__content:hover span {
+    transform: translateZ(30px);
+}
